@@ -5,11 +5,13 @@ const cors = require('cors');
 
 const BooksRoutes = require('./routes/books');
 
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DBURL = process.env.DB_URL || '';
 
-mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(DBURL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('DataBase Connected!!'))
     .catch(err => console.error('DB error', err));
 
@@ -20,7 +22,7 @@ app.use(cors());
 app.use('/books', BooksRoutes);
 
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('Try other routes!!');
 });
 
@@ -28,5 +30,5 @@ app.get('/', (req,res) => {
 
 
 app.listen(PORT, () => {
-    console.log('Server started ar port '+PORT);
+    console.log('Server started ar port ' + PORT);
 });
